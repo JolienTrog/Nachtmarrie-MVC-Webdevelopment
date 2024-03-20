@@ -15,6 +15,7 @@ class Item extends Table
     public function getColumns(): array
     {
         return [
+            'id',
             'nl',
             'de'
         ];

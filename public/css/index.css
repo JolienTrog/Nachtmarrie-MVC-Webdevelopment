@@ -1,0 +1,24 @@
+body {
+    background-color: #ffffff; /* Weiß */
+    color: #000000; /* Schwarz */
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #000000; /* Schwarz */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #999999; /* Grau */
+}
+
+th {
+    background-color: #eeeeee; /* Hellgrau */
+}
