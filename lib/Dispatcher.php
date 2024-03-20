@@ -4,12 +4,20 @@ namespace Nachtmerrie;
 
 class Dispatcher
 {
+    /**
+     * @var string base url
+     */
     private const BASE_URL = '/';
 
-    public static function dispatch()
+    /**
+     * @return void calls the controller and corresponding method
+     * @return void
+     */
+
+    public static function dispatch() : void
     {
-        $requestedUrlArray = explode('?', $_SERVER['REQUEST_URI']);
-        $requestedUrl = $requestedUrlArray[0];
+        $requestedUrl = explode('?', $_SERVER['REQUEST_URI'])[0];
+
 
         $parts = explode(
             '/',
@@ -31,6 +39,6 @@ class Dispatcher
         }
 
         (new $controllerClassPath())->$actionMethod();
-        
+
     }
 }

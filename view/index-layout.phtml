@@ -1,0 +1,19 @@
+<h1><?= $this->data['WL'] ?></h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>NL</th>
+        <th>DE</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($this->data['result'] as $row): ?>
+        <tr>
+            <td><?= htmlspecialchars($row['id']) ?></td>
+            <td><?= htmlspecialchars($row['nl']) ?></td>
+            <td><?= htmlspecialchars($row['de']) ?></td>
+        </tr>
+    <?php endforeach ?>
+    </tbody>
+</table>

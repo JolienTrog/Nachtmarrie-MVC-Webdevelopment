@@ -3,14 +3,13 @@
 namespace Nachtmerrie\Controller;
 
 use Nachtmerrie\Database\Item;
-use Nachtmerrie\Database\Table;
 use Nachtmerrie\Select;
 use Nachtmerrie\View;
 
 
 class ItemController extends Controller
 {
-    public function indexAction()
+    public function indexAction() : void
     {
         $select = (new Select($this->connection))
             ->columns(['id', 'nl', 'de'])
@@ -21,7 +20,7 @@ class ItemController extends Controller
 
         $viewObject = (new View())
             ->setOuterLayout('outer-layout.phtml')
-            ->setInnerLayout('index.phtml')
+            ->setInnerLayout('index-layout.phtml')
             ->setTitle('Nachtmerrie')
             ->setData('WL','Woordenlijst')
             ->setData('result', $result)

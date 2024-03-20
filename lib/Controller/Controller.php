@@ -4,7 +4,7 @@ namespace Nachtmerrie\Controller;
 
 use PDO;
 
-class Controller
+abstract class Controller
 {
     /**
      * @var PDO
@@ -24,4 +24,6 @@ class Controller
             'admin123'
         );
     }
+//    public function indexAction(): void;
+
 }
