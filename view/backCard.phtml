@@ -1,0 +1,22 @@
+<div>
+    <a class="back-link" href="/item"><-back</a>
+</div>
+<div class="cardbutton-container">
+    <a href="/item/frontCard?id=<?= $this->data['id'] ?>">
+        <button class="cardbutton">
+            <?= htmlspecialchars($this->data['result'][0]['de']) ?>
+        </button>
+    </a>
+</div>
+<div class="btn-container">
+    <!--not finished: wenn button geklickt dann wird in db gespeichert 'unknown' -->
+    <a href="/item/frontCard?id=<?= $this->data['id'] ?>" class="btn">
+        <button class="btn" type="submit" name="unknown">❌</button>
+    </a>
+    <!--not finished: wenn button geklickt dann wird in db gespeichert 'known' -->
+    <a href="/item/frontCard" class="btn">
+        <button class="btn" type="submit" name="known">✔️</button>
+    </a>
+
+</div>
+

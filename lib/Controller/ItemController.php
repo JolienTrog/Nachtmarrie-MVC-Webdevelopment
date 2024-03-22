@@ -7,6 +7,7 @@ use Nachtmerrie\Select;
 use Nachtmerrie\View;
 
 
+
 class ItemController extends Controller
 {
     public function indexAction() : void
@@ -29,5 +30,68 @@ class ItemController extends Controller
         echo $viewObject->render();
     }
 
+    /**
+     */
+    public function frontCardAction() :void
+    {
+        if(isset($_GET['id'])){
+            $id = $_GET['id'];
+        } else {
+            $id = rand(1, 3);
+        }
+
+        $select = (new Select($this->connection))
+
+            ->columns(['nl'])
+            ->where("id=:id", [":id"=>$id])
+            ->from(new Item());
+
+        $result = $select->fetchAll();
+
+        $viewObject = (new View())
+            ->setOuterLayout('outer-layout.phtml')
+            ->setInnerLayout('frontCard.phtml')
+            ->setTitle('Nachtmerrie')
+            ->setData('result', $result)
+            ->setData('id', $id)
+            ->setStylesheet('index.css');
+
+        echo $viewObject->render();
+
+        if(isset($_POST['backCard'])){
+            $backCard = $_POST['backCard'];
+
+        if($backCard==true){
+
+            $this->backCardAction();
+        } }
+
+
+    }
+    public function backCardAction() :void
+    {
+
+        $id = $_GET['id'];
+        $select = (new Select($this->connection))
+            ->columns(['de'])
+            ->where("id=:id", [":id"=>$id])
+            ->from(new Item());
+
+        $result = $select->fetchAll();
+
+        $viewObject = (new View())
+            ->setOuterLayout('outer-layout.phtml')
+            ->setInnerLayout('backCard.phtml')
+            ->setTitle('Nachtmerrie')
+            ->setData('result', $result)
+            ->setData('id', $id)
+            ->setStylesheet('index.css');
+
+        echo $viewObject->render();
+
+    }
+
+
 }
+
 
