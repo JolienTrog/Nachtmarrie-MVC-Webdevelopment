@@ -3,6 +3,8 @@
 namespace Nachtmerrie\Controller;
 
 use Nachtmerrie\Database\Item;
+use Nachtmerrie\Extract;
+use Nachtmerrie\Insert;
 use Nachtmerrie\Select;
 use Nachtmerrie\View;
 
@@ -10,6 +12,9 @@ use Nachtmerrie\View;
 
 class ItemController extends Controller
 {
+    /**
+     * @return void shows the page with all items in a table
+     */
     public function indexAction() : void
     {
         $select = (new Select($this->connection))
@@ -31,6 +36,7 @@ class ItemController extends Controller
     }
 
     /**
+     * @return void gets a random word via ID from the database and shows the Dutch word
      */
     public function frontCardAction() :void
     {
@@ -58,16 +64,12 @@ class ItemController extends Controller
 
         echo $viewObject->render();
 
-        if(isset($_POST['backCard'])){
-            $backCard = $_POST['backCard'];
 
-        if($backCard==true){
+        }
 
-            $this->backCardAction();
-        } }
-
-
-    }
+    /**
+     * @return void gets the german translation to the Dutch word from frontCardAction
+     */
     public function backCardAction() :void
     {
 
@@ -90,6 +92,23 @@ class ItemController extends Controller
         echo $viewObject->render();
 
     }
+
+    public function newListAction()
+    {
+        $extractData = (new Extract());
+        $data = $extractData->execute();
+        print_r($data);
+
+        foreach ($data as $word){
+        $newList = (new Insert($this->connection))
+            ->value(['de' => $word])
+            ->insertInto(new Item());
+        $newList->execute();
+        }
+        header("Location: /item");
+
+    }
+
 
 
 }
