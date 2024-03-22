@@ -101,7 +101,7 @@ th {
     /* Neue Stile für vertikales Zentrieren */
     display: block;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: 30px;
     margin-bottom: 20px;
 }
 
@@ -122,4 +122,9 @@ a {
 }
 .back-link:hover {
     color: lightgrey; /* Farbe ändern, wenn Mauszeiger darüber bewegt wird */
+}
+
+.button-container {
+    display: flex; /* Flexbox verwenden */
+    justify-content: center; /* Zentriert die Buttons horizontal */
 }
