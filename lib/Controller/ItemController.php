@@ -3,6 +3,7 @@
 namespace Nachtmerrie\Controller;
 
 use Nachtmerrie\Database\Item;
+use Nachtmerrie\Delete;
 use Nachtmerrie\Extract;
 use Nachtmerrie\Insert;
 use Nachtmerrie\Select;
@@ -105,6 +106,26 @@ class ItemController extends Controller
             ->insertInto(new Item());
         $newList->execute();
         }
+        header("Location: /item");
+
+    }
+    public function deleteAction()
+    {
+        //button auslösung einlesen
+        if (isset($_POST['delete'])) {
+            $delId = $_POST['delId'];
+
+            //delete klasse ausführen
+            $delete = (new Delete($this->connection))
+                ->deleteFrom(new Item())
+                ->where("id=:id")
+                ->value(['id' => $delId]);
+
+            //überprüfen ob gelöscht
+
+            //ausführen
+            $delete->execute();
+        }   //redirect to index
         header("Location: /item");
 
     }

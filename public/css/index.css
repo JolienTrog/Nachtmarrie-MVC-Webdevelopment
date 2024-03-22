@@ -51,7 +51,7 @@ th {
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    margin-top: 150px auto;
+    margin-top: 150px;
     border: 2px solid dimgray; /* Dicke der Umrandung und Farbe */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Schatten */
     font-size: 70px; /* Schriftgröße */
@@ -127,4 +127,13 @@ a {
 .button-container {
     display: flex; /* Flexbox verwenden */
     justify-content: center; /* Zentriert die Buttons horizontal */
+}
+.delItem {
+    margin-bottom: 10px;
+    background-color: #3f0800;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }

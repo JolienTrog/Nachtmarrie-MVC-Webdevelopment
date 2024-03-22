@@ -24,6 +24,5 @@ abstract class Controller
             'admin123'
         );
     }
-//    public function indexAction(): void;
 
 }
