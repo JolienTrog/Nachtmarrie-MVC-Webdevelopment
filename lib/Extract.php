@@ -15,7 +15,6 @@ class Extract
 
     protected $words;
 
-
     /**
      * @param array $textlines
      * @return $this textlines selected from json and saved in array
@@ -47,18 +46,27 @@ class Extract
     /**
      * @return $this single words without punctuation characters
      * @var array $words with single words
-     * #[[:digit:]][[:word:]]
      */
     protected function extractContent(): void
     {
-//        $words = [];
+
         foreach ($this->textlines as $lines) {
+            $randID = rand(0, strlen($lines));
+
             $oneLine = str_replace(["\n", "\r"], " ", $lines);
             $oneLinePure = preg_replace("/[^a-zA-ZöäüßÖÄÜ\s]/", "", $oneLine);
-            foreach (explode(' ', $oneLinePure) as $word) {
+            foreach (explode(' ', $oneLinePure[$randID]) as $word) {
                 $this->words[] = $word;
             }
         }
+//        ---OLD
+//        foreach ($this->textlines as $lines) {
+//            $oneLine = str_replace(["\n", "\r"], " ", $lines);
+//            $oneLinePure = preg_replace("/[^a-zA-ZöäüßÖÄÜ\s]/", "", $oneLine);
+//            foreach (explode(' ', $oneLinePure) as $word) {
+//                $this->words[] = $word;
+//            }
+//        }
     }
 
     //wörter abgleichen, wenn doppelt löschen
@@ -72,6 +80,9 @@ class Extract
     protected function delDoubleWords(): void
     {
         $this->words = array_unique($this->words);
+        if(!isset($this->words)){
+            $this->words = $this->extractContent();
+        }
         sort($this->words);
 
     }
@@ -107,6 +118,5 @@ class Extract
     }
 //
 }
-
 //$data = (new Extract())->execute();
 //print_r($data);
