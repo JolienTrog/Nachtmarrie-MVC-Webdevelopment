@@ -11,6 +11,10 @@ class Select
     protected $columns;
     /** @var Table The table to select from */
     protected $from;
+    /**
+     * @var string to join to tables
+     */
+    protected $innerJoin;
     /** @var string The where statement */
     protected $where;
     /** @var array The data for the where statement */
@@ -27,6 +31,11 @@ class Select
     public function from(Table $table): self
     {
         $this->from = $table;
+        return $this;
+    }
+    public function innerJoin(array $innerJoin): self
+    {
+        $this->from = $innerJoin;
         return $this;
     }
     public function where(string $whereStmt, array $whereData): self
@@ -53,6 +62,11 @@ class Select
             $colsToSelect[] = $column;
         }
         $query = "SELECT %s FROM %s";
+
+        if($this->innerJoin) {
+            $query .= ' INNER JOIN' . $this->from . ' ON ' . $this->columns . ' = ' . $this->columns;
+        }
+
         if ($this->where) {
             $query .= ' WHERE ' . $this->where;
         }

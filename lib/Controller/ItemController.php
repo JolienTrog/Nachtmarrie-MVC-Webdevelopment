@@ -50,6 +50,7 @@ class ItemController extends Controller
         $select = (new Select($this->connection))
             ->columns(['nl'])
             ->where("id=:id", [":id" => $id])
+
             ->from(new Item());
 
         $result = $select->fetchAll();
