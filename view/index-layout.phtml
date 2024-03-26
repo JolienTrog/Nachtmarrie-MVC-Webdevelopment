@@ -1,15 +1,16 @@
 <div class="logo-container">
     <img class="logo" src="Lijst_logo.png" alt="Image of Nachtmerrie">
 </div>
-<!--<h1>--><?php //= $this->data['WL'] ?><!--</h1>-->
 <div class="button-container">
     <form action="/item/frontCard" method="post">
-        <button class="learnCards">Woorden leren</button>
+        <button class="actionButton">Woorden leren</button>
     </form>
+    <a class="actionButton" href="/item/newItem">Nieuw Word</a>
     <form action="/item/newList" method="post">
-        <button type="submit" class="learnCards">Nieuw Woordenlijst</button>
+        <button type="submit" class="actionButton">Nieuw Woordenlijst</button>
     </form>
 </div>
+
 <table>
     <thead>
     <tr>

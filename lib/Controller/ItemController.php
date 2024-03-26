@@ -149,6 +149,48 @@ class ItemController extends Controller
         }   //redirect to index
         header("Location: /item");
     }
+    public function newItemAction()
+    {
+
+        $viewObject = (new View())
+            ->setOuterLayout('outer-layout.phtml')
+            ->setInnerLayout('newItem.phtml')
+            ->setTitle('nieuw Word')
+            ->setData('test', 'Add new Item')
+            ->setStylesheet('index.css');
+
+        echo $viewObject->render();
+
+
+    }
+    public function insertAction()
+    {
+
+        $nl = $_POST['nl'];
+        $nl_sentence = $_POST['nl_sentence'];
+        $de = $_POST['de'];
+        $de_sentence = $_POST['de_sentence'];
+
+        $insertItem = (new Insert($this->connection))
+            ->value([
+                'nl' => $nl,
+                'de' => $de
+            ])
+            ->insertInto(new Item());
+        $insertItem->execute();
+        $insertSentence = (new Insert($this->connection))
+            ->value([
+                'nl' => $nl_sentence,
+                'de' => $de_sentence
+            ])
+            ->insertInto(new Sentence());
+        $insertSentence->execute();
+
+        //redirect to other page with url
+        header("Location: /item");
+    }
+
+
 
 }
 
