@@ -1,0 +1,396 @@
+{
+  "pdfDoc" : "HP64.pdf",
+  "extractedBy" : "https://busypdf.com",
+  "pages" : [ {
+    "pageNo" : 1,
+    "trimBoxOriginX" : 0.0,
+    "trimBoxOriginY" : 0.0,
+    "trimBoxWidth" : 612.0,
+    "trimBoxHeight" : 792.0,
+    "txtRns" : [ {
+      "leftX" : 72,
+      "bottomY" : 84.8291,
+      "rightX" : 514.4064,
+      "topY" : 72.8291,
+      "baseLineY" : 82.32,
+      "fontId" : 1,
+      "text" : "Ein plötzliches Geräusch draußen im Gang setzte ihrer Streiterei ein Ende. Sie "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 98.0291,
+      "rightX" : 320.902,
+      "topY" : 86.0291,
+      "baseLineY" : 95.52,
+      "fontId" : 1,
+      "text" : "hatten nicht bemerkt, wie laut sie sprachen. "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 117.2291,
+      "rightX" : 130.203,
+      "topY" : 105.2291,
+      "baseLineY" : 114.72,
+      "fontId" : 1,
+      "text" : "»Schnell!« "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 136.4291,
+      "rightX" : 502.6626,
+      "topY" : 124.4291,
+      "baseLineY" : 133.92,
+      "fontId" : 1,
+      "text" : "Ron warf den Umhang über sie beide und in diesem Augenblick huschten die "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 149.6291,
+      "rightX" : 488.1288,
+      "topY" : 137.6291,
+      "baseLineY" : 147.12,
+      "fontId" : 1,
+      "text" : "leuchtenden Augen von Mrs Norris durch die Tür. Ron und Harry standen "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 162.8291,
+      "rightX" : 523.5808,
+      "topY" : 150.8291,
+      "baseLineY" : 160.32,
+      "fontId" : 1,
+      "text" : "mucksmäuschenstill und beide stellten sich dieselbe Frage – wirkte der Umhang "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 176.0291,
+      "rightX" : 538.6344,
+      "topY" : 164.0291,
+      "baseLineY" : 173.52,
+      "fontId" : 1,
+      "text" : "auch bei Katzen? Es schien eine Ewigkeit zu dauern, doch dann wandte sie sich um "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 189.2291,
+      "rightX" : 169.766,
+      "topY" : 177.2291,
+      "baseLineY" : 186.72,
+      "fontId" : 1,
+      "text" : "und verschwand. "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 208.4291,
+      "rightX" : 526.5864,
+      "topY" : 196.4291,
+      "baseLineY" : 205.92,
+      "fontId" : 1,
+      "text" : "»Wir sind hier nicht mehr sicher, vielleicht ist sie zu Filch gelaufen, ich wette, sie "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 221.6291,
+      "rightX" : 232.455,
+      "topY" : 209.6291,
+      "baseLineY" : 219.12,
+      "fontId" : 1,
+      "text" : "hat uns gehört. Los, komm.« "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 240.8291,
+      "rightX" : 227.984,
+      "topY" : 228.8291,
+      "baseLineY" : 238.32,
+      "fontId" : 1,
+      "text" : "Und Ron zog Harry hinaus. "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 260.0291,
+      "rightX" : 421.045,
+      "topY" : 248.0291,
+      "baseLineY" : 257.52,
+      "fontId" : 1,
+      "text" : "Am nächsten Morgen war der Schnee noch nicht geschmolzen. "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 279.2291,
+      "rightX" : 337.309,
+      "topY" : 267.2291,
+      "baseLineY" : 276.72,
+      "fontId" : 1,
+      "text" : "»Hast du Lust auf Schach, Harry?«, fragte Ron. "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 298.4291,
+      "rightX" : 115.772,
+      "topY" : 286.4291,
+      "baseLineY" : 295.92,
+      "fontId" : 1,
+      "text" : "»Nein.« "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 317.6291,
+      "rightX" : 398.164,
+      "topY" : 305.6291,
+      "baseLineY" : 315.12,
+      "fontId" : 1,
+      "text" : "»Wie wär’s, wenn wir runtergehen und Hagrid besuchen?« "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 336.8291,
+      "rightX" : 252.664,
+      "topY" : 324.8291,
+      "baseLineY" : 334.32,
+      "fontId" : 1,
+      "text" : "»Nein … du kannst ja gehen …« "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 356.0291,
+      "rightX" : 539.9856,
+      "topY" : 344.0291,
+      "baseLineY" : 353.52,
+      "fontId" : 1,
+      "text" : "»Ich weiß, was dir im Kopf rumgeht, Harry, dieser Spiegel. Bleib heute Nacht lieber "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 369.2291,
+      "rightX" : 106.215,
+      "topY" : 357.2291,
+      "baseLineY" : 366.72,
+      "fontId" : 1,
+      "text" : "hier.« "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 388.4291,
+      "rightX" : 132.646,
+      "topY" : 376.4291,
+      "baseLineY" : 385.92,
+      "fontId" : 1,
+      "text" : "»Warum?« "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 407.6291,
+      "rightX" : 520.2246,
+      "topY" : 395.6291,
+      "baseLineY" : 405.12,
+      "fontId" : 1,
+      "text" : "»Ich weiß nicht, ich hab nur ein schlechtes Gefühl dabei – und außerdem bist du "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 420.8291,
+      "rightX" : 524.61,
+      "topY" : 408.8291,
+      "baseLineY" : 418.32,
+      "fontId" : 1,
+      "text" : "jetzt schon zu oft nur um Haaresbreite entkommen. Filch, Snape und Mrs Norris "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 434.0291,
+      "rightX" : 541.9549,
+      "topY" : 422.0291,
+      "baseLineY" : 431.52,
+      "fontId" : 1,
+      "text" : "streifen im Schloss umher. Sie können dich zwar nicht sehen, aber was ist, wenn sie "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 447.2291,
+      "rightX" : 399.752,
+      "topY" : 435.2291,
+      "baseLineY" : 444.72,
+      "fontId" : 1,
+      "text" : "einfach in dich reinlaufen? Was, wenn du etwas umstößt?« "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 466.4291,
+      "rightX" : 256.643,
+      "topY" : 454.4291,
+      "baseLineY" : 463.92,
+      "fontId" : 1,
+      "text" : "»Du hörst dich an wie Hermine.« "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 485.6291,
+      "rightX" : 272.404,
+      "topY" : 473.6291,
+      "baseLineY" : 483.12,
+      "fontId" : 1,
+      "text" : "»Mir ist es ernst, Harry, geh nicht.« "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 504.8291,
+      "rightX" : 459.9804,
+      "topY" : 492.8291,
+      "baseLineY" : 502.32,
+      "fontId" : 1,
+      "text" : "Doch Harry hatte nur einen Gedanken im Kopf, nämlich zum Spiegel "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 518.0291,
+      "rightX" : 373.941,
+      "topY" : 506.0291,
+      "baseLineY" : 515.52,
+      "fontId" : 1,
+      "text" : "zurückzukehren. Und Ron würde ihn nicht aufhalten. "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 537.2291,
+      "rightX" : 78.67,
+      "topY" : 525.2291,
+      "baseLineY" : 534.72,
+      "fontId" : 1,
+      "text" : "  "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 556.4291,
+      "rightX" : 536.1541,
+      "topY" : 544.4291,
+      "baseLineY" : 553.92,
+      "fontId" : 1,
+      "text" : "In dieser dritten Nacht fand er den Weg schneller als zuvor. Er rannte und wusste, "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 569.6291,
+      "rightX" : 415.561,
+      "topY" : 557.6291,
+      "baseLineY" : 567.12,
+      "fontId" : 1,
+      "text" : "dass er unvorsichtig laut war, doch er begegnete niemandem. "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 588.8291,
+      "rightX" : 529.08,
+      "topY" : 576.8291,
+      "baseLineY" : 586.32,
+      "fontId" : 1,
+      "text" : "Und da waren seine Mutter und sein Vater wieder. Sie lächelten ihn an und einer "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 602.0291,
+      "rightX" : 546.4272,
+      "topY" : 590.0291,
+      "baseLineY" : 599.52,
+      "fontId" : 1,
+      "text" : "seiner Großväter nickte glücklich mit dem Kopf. Harry sank vor dem Spiegel auf den "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 615.2291,
+      "rightX" : 546.6888,
+      "topY" : 603.2291,
+      "baseLineY" : 612.72,
+      "fontId" : 1,
+      "text" : "Boden. Nichts würde ihn davon abhalten, die ganze Nacht über bei seiner Familie zu "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 628.4291,
+      "rightX" : 231.787,
+      "topY" : 616.4291,
+      "baseLineY" : 625.92,
+      "fontId" : 1,
+      "text" : "bleiben – nichts in der Welt. "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 647.6291,
+      "rightX" : 119.557,
+      "topY" : 635.6291,
+      "baseLineY" : 645.12,
+      "fontId" : 1,
+      "text" : "Außer – "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 666.8291,
+      "rightX" : 216.646,
+      "topY" : 654.8291,
+      "baseLineY" : 664.32,
+      "fontId" : 1,
+      "text" : "»Nun, wieder da, Harry?« "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 686.0291,
+      "rightX" : 523.9584,
+      "topY" : 674.0291,
+      "baseLineY" : 683.52,
+      "fontId" : 1,
+      "text" : "Harry kam sich vor, als ob sein Inneres zu Eis erstarrt wäre. Er wandte sich um. "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 699.2291,
+      "rightX" : 518.902,
+      "topY" : 687.2291,
+      "baseLineY" : 696.72,
+      "fontId" : 1,
+      "text" : "Auf einem der Tische an der Wand saß niemand anderer als Albus Dumbledore. "
+    }, {
+      "leftX" : 72,
+      "bottomY" : 755.88,
+      "rightX" : 165.6696,
+      "topY" : 743.88,
+      "baseLineY" : 753.12,
+      "fontId" : 2,
+      "text" : "HARRY POTTER"
+    }, {
+      "leftX" : 165.539,
+      "bottomY" : 755.88,
+      "rightX" : 168.875,
+      "topY" : 743.88,
+      "baseLineY" : 753.12,
+      "fontId" : 3,
+      "text" : " "
+    }, {
+      "leftX" : 168.873,
+      "bottomY" : 755.6291,
+      "rightX" : 313.303,
+      "topY" : 743.6291,
+      "baseLineY" : 753.12,
+      "fontId" : 1,
+      "text" : "und der Stein der Weisen "
+    }, {
+      "leftX" : 324,
+      "bottomY" : 755.6291,
+      "rightX" : 327.336,
+      "topY" : 743.6291,
+      "baseLineY" : 753.12,
+      "fontId" : 1,
+      "text" : " "
+    }, {
+      "leftX" : 360,
+      "bottomY" : 755.6291,
+      "rightX" : 363.336,
+      "topY" : 743.6291,
+      "baseLineY" : 753.12,
+      "fontId" : 1,
+      "text" : " "
+    }, {
+      "leftX" : 396,
+      "bottomY" : 755.6291,
+      "rightX" : 399.336,
+      "topY" : 743.6291,
+      "baseLineY" : 753.12,
+      "fontId" : 1,
+      "text" : " "
+    }, {
+      "leftX" : 432,
+      "bottomY" : 755.6291,
+      "rightX" : 533.164,
+      "topY" : 743.6291,
+      "baseLineY" : 753.12,
+      "fontId" : 1,
+      "text" : "Seite 139 von 139 "
+    } ],
+    "txtChars" : null
+  } ],
+  "fontSpecs" : [ {
+    "id" : 1,
+    "fontFamily" : "NewCenturySchlbk-Roman",
+    "fontSize" : 12.0,
+    "italic" : false,
+    "bold" : false,
+    "color" : "#000000"
+  }, {
+    "id" : 2,
+    "fontFamily" : "Helvetica",
+    "fontSize" : 12.0,
+    "italic" : false,
+    "bold" : false,
+    "color" : "#000000"
+  }, {
+    "id" : 3,
+    "fontFamily" : "Helvetica-Bold",
+    "fontSize" : 12.0,
+    "italic" : false,
+    "bold" : true,
+    "color" : "#000000"
+  } ],
+  "notices" : "Text coordinates are specified with respect to the TrimBox of the page. You will need to adjust if you want raw pdf coordinates."
+}

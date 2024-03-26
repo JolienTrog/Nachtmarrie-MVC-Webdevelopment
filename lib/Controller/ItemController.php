@@ -2,7 +2,10 @@
 
 namespace Nachtmerrie\Controller;
 
+use DeepL\DeepLException;
+use DeepL\Translator;
 use Nachtmerrie\Database\Item;
+use Nachtmerrie\Database\Sentence;
 use Nachtmerrie\Delete;
 use Nachtmerrie\Extract;
 use Nachtmerrie\Insert;
@@ -10,13 +13,12 @@ use Nachtmerrie\Select;
 use Nachtmerrie\View;
 
 
-
 class ItemController extends Controller
 {
     /**
      * @return void shows the page with all items in a table
      */
-    public function indexAction() : void
+    public function indexAction(): void
     {
         $select = (new Select($this->connection))
             ->columns(['id', 'nl', 'de'])
@@ -24,33 +26,30 @@ class ItemController extends Controller
 
         $result = $select->fetchAll();
 
-
         $viewObject = (new View())
             ->setOuterLayout('outer-layout.phtml')
             ->setInnerLayout('index-layout.phtml')
             ->setTitle('Nachtmerrie')
-            ->setData('WL','Woordenlijst')
+            ->setData('WL', 'Woordenlijst')
             ->setData('result', $result)
             ->setStylesheet('index.css');
 
         echo $viewObject->render();
     }
-
     /**
      * @return void gets a random word via ID from the database and shows the Dutch word
      */
-    public function frontCardAction() :void
+    public function frontCardAction(): void
     {
-        if(isset($_GET['id'])){
+        if (isset($_GET['id'])) {
             $id = $_GET['id'];
         } else {
             $id = rand(1, 3);
         }
 
         $select = (new Select($this->connection))
-
             ->columns(['nl'])
-            ->where("id=:id", [":id"=>$id])
+            ->where("id=:id", [":id" => $id])
             ->from(new Item());
 
         $result = $select->fetchAll();
@@ -62,22 +61,19 @@ class ItemController extends Controller
             ->setData('result', $result)
             ->setData('id', $id)
             ->setStylesheet('index.css');
-
+        
         echo $viewObject->render();
-
-
-        }
-
+    }
     /**
      * @return void gets the german translation to the Dutch word from frontCardAction
      */
-    public function backCardAction() :void
+    public function backCardAction(): void
     {
 
         $id = $_GET['id'];
         $select = (new Select($this->connection))
             ->columns(['de'])
-            ->where("id=:id", [":id"=>$id])
+            ->where("id=:id", [":id" => $id])
             ->from(new Item());
 
         $result = $select->fetchAll();
@@ -91,24 +87,49 @@ class ItemController extends Controller
             ->setStylesheet('index.css');
 
         echo $viewObject->render();
-
     }
-
+    /**
+     * it extracts sentences and one word from each sentence from a json file, passes the data via
+     * deepl API to translation, inserts the dutch-german sentence and word to database
+     * @throws DeepLException
+     */
     public function newListAction()
     {
         $extractData = (new Extract());
         $data = $extractData->execute();
-        print_r($data);
 
-        foreach ($data as $word){
-        $newList = (new Insert($this->connection))
-            ->value(['de' => $word])
-            ->insertInto(new Item());
-        $newList->execute();
+        //für reale projekte in externer datei
+        $authKey = "148cc420-c83e-4bc8-a4d0-4bd710d0d55a:fx";
+        $translator = new Translator($authKey);
+//      testtool for connection to server with deepl-mock docker [TranslatorOptions::SERVER_URL => 'localhost:3000']
+        foreach ($data as $word => $sentence) {
+            (new Insert($this->connection))
+                ->value(['de' => $word, 'nl' => $translator->translateText($word, 'de', 'nl')->text])
+                ->insertInto(new Item())
+                ->execute();
+            (new Insert($this->connection))
+                ->insertInto(new Sentence())
+                ->value(['de' => $sentence, 'nl' => $translator->translateText($sentence, 'de', 'nl')->text])
+                ->execute();
         }
-        header("Location: /item");
 
+// check account usage, only 500 000 characters free per month
+        $usage = $translator->getUsage();
+        if (!$usage->anyLimitReached()) {
+            header("Location: /item");
+        }
+        echo 'Translation limit exceeded. <br>';
+        if ($usage->character) {
+            echo 'Characters: ' . $usage->character->count . ' of ' . $usage->character->limit . '<br>';
+        }
+        if ($usage->document) {
+            echo 'Documents: ' . $usage->document->count . ' of ' . $usage->document->limit . '<br>';
+        }
     }
+    /**
+     * takes a value from DB and deletes it
+     * @return void
+     */
     public function deleteAction()
     {
         //button auslösung einlesen
@@ -127,10 +148,7 @@ class ItemController extends Controller
             $delete->execute();
         }   //redirect to index
         header("Location: /item");
-
     }
-
-
 
 }
 

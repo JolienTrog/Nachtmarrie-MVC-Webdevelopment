@@ -1,0 +1,13 @@
+{
+    "require": {
+        "deeplcom/deepl-php": "^1.7",
+        "symfony/http-client": "^6.4",
+        "nyholm/psr7": "^1.8",
+        "ext-pdo": "*"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    }
+}
