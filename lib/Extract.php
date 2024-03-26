@@ -4,119 +4,115 @@ namespace Nachtmerrie;
 
 class Extract
 {
-
     /**
      * @var array extracted text from json
      */
-    protected $textlines;
+    public $textlines;
     /**
      * @var array single words
      */
-
-    protected $words;
-
+    public $words;
     /**
      * @param array $textlines
      * @return $this textlines selected from json and saved in array
      */
-
     protected function getContent(): void
     {
-        $jsonFile = "../Files/chatData1.json";
+        $jsonFile = "../Files/HP64.json";
         $json = file_get_contents($jsonFile);
         $data = json_decode($json, true);
 
         $resultLines = [];
-        foreach ($data['messages'] as $message) {
-            $textlines = $message['text'];
+        foreach ($data['pages'] as $page) {
+            $textlines = $page['txtRns'];
             if (is_array($textlines)) {
-                foreach ($textlines as $text) {
-                    if (is_string($text)) {
-                        $resultLines[] = $text;
-                    }
+                foreach ($textlines as $txtRn) {
+                    $text = $txtRn['text'];
+                    $resultLines[] = $text;
                 }
-            }
-            if (is_string($textlines)) {
-                $resultLines[] = $textlines;
             }
         }
         $this->textlines = $resultLines;
     }
-
     /**
-     * @return $this single words without punctuation characters
-     * @var array $words with single words
+     * @return $this one word and a fitting sentence as key -> value pair
+     * deletes all punctuation marks and empty arrays
+     * checks that there are no name used (specified to Harry Potter Book I)
+     * @var array $words with single words and sentences
      */
     protected function extractContent(): void
     {
+        $jsonFile = "../Files/HPnames.json";
+        $json = file_get_contents($jsonFile);
+        $deleteNames= json_decode($json);
+        $pattern = '/Seite\s+\d+\s+von\s+\d+/';
 
-        foreach ($this->textlines as $lines) {
-            $randID = rand(0, strlen($lines));
-
-            $oneLine = str_replace(["\n", "\r"], " ", $lines);
+        foreach ($this->textlines as $line) {
+            $line = preg_replace($pattern, '', $line);
+            $oneLine = str_replace(["\n", "\r"], " ", $line);
             $oneLinePure = preg_replace("/[^a-zA-ZöäüßÖÄÜ\s]/", "", $oneLine);
-            foreach (explode(' ', $oneLinePure[$randID]) as $word) {
-                $this->words[] = $word;
+            $words = explode(' ', $oneLinePure);
+            $randIndex = rand(0, count($words) - 1);
+
+            $randWord = $words[$randIndex];
+            if (!in_array($randWord, $deleteNames)) {
+
+                $this->words[$randWord] = $oneLine; // Zufälliges Wort als Schlüssel, Zeile als Wert
             }
         }
-//        ---OLD
-//        foreach ($this->textlines as $lines) {
-//            $oneLine = str_replace(["\n", "\r"], " ", $lines);
-//            $oneLinePure = preg_replace("/[^a-zA-ZöäüßÖÄÜ\s]/", "", $oneLine);
-//            foreach (explode(' ', $oneLinePure) as $word) {
-//                $this->words[] = $word;
-//            }
-//        }
     }
-
-    //wörter abgleichen, wenn doppelt löschen
-
     /**
      * @return void
      * @var array $uniquWords unique words
-     * @var array $innerArray
-     * @var array $compArray all words from the document
      */
     protected function delDoubleWords(): void
     {
         $this->words = array_unique($this->words);
-        if(!isset($this->words)){
-            $this->words = $this->extractContent();
-        }
-        sort($this->words);
+             sort($this->words);
 
     }
 
+    /**
+     * @return void removes empty arrays
+     */
     protected function cleanUpValue():void
     {
-        $cleanUp = $this->words;
-        //remove empty
-        $this->words = array_filter($cleanUp);
-
-        sort($this->words);
-
+        foreach ($this->words as $key => $value) {
+            if (empty($value)) {
+                unset($this->words[$key]);
+            }
+        }
+//        foreach ($this->textlines as $key => $value) {
+//            if (empty($value)) {
+//                unset($this->textlines[$key]);
+//            }
+//        }
+        $this->words = array_filter($this->words);
+//        $this->textlines = array_filter($this->textlines);
     }
 
-
-    public function selectVocabulary(): array
+    protected function selectVocabulary(): array
     {
         shuffle($this->words);
         return array_slice($this->words, 1, 101);
     }
 
-    public function execute()
+    public function execute(): array
     {
         $this->getContent();
-        echo "test1";
         $this->extractContent();
-        echo "test2";
-        $this->delDoubleWords();
-        echo "test3";
         $this->cleanUPValue();
-        echo "test4";
-        return $this->selectVocabulary();
+        return $this->words;
     }
-//
+
 }
 //$data = (new Extract())->execute();
 //print_r($data);
+//$data = (new Extract());
+//$data->getContent();
+//$data->extractContent();
+////$data->delDoubleWords();
+//$data->cleanUpValue();
+////print_r($data);
+//var_dump($data->words);
+//var_dump($data);

@@ -3,6 +3,7 @@
 //use Nachtmerrie\Dispatcher;
 
 require_once('../lib/functions.php');
+require_once('../vendor/autoload.php'); //einbinden von vendor autoloader
 session_start();
 spl_autoload_register('\Nachtmerrie\autoloader');
 

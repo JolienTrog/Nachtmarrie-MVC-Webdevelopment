@@ -4,7 +4,6 @@ VALUES (value1, value2, value3, ...); **/
 
 namespace Nachtmerrie;
 
-use InvalidArgumentException;
 use PDO;
 use PDOStatement;
 use Nachtmerrie\Database\Table;
@@ -24,13 +23,11 @@ class Insert
      */
     protected $insertInto;
 
-
     //Connection to Database
     public function __construct(PDO $connection)
     {
         $this->connection = $connection;
     }
-
     public function insertInto(Table $table): self
     {
         $this->insertInto = $table;
@@ -41,33 +38,27 @@ class Insert
         $this->value = $insertValues;
         return $this;
     }
-    public function execute()
+    /**
+     * Set the foreign key ID
+     *
+     * @param int $foreignKeyId
+     * @return self
+     */
+
+    public function execute(): void
     {
         $this->prepareInsert()->execute();
     }
 
     protected function prepareInsert(): PDOStatement
     {
-        $availableColumns = $this->insertInto->getColumns();
         $tableName = $this->insertInto->getTableName();
-        $placeholders = [];
-
-        foreach (array_keys($this->value) as $column) {
-            if (!in_array($column, $availableColumns)) {
-                throw new InvalidArgumentException(
-                    "Column $column is not in table's column list (Table: $tableName)"
-                );
-            }
-            $placeholders[] = ":$column";
-        }
-
         $columnString = implode(', ', array_keys($this->value));
-        $placeholderString = implode(', ', $placeholders);
+        $placeholderString = ':' . implode(', :', array_keys($this->value));
 
 
         $query = "INSERT INTO %s (%s) VALUES (%s)";
-
-        $stmt = $this->connection->prepare(
+                $stmt = $this->connection->prepare(
             sprintf(
                 $query,
                 $tableName,
@@ -75,10 +66,45 @@ class Insert
                 $placeholderString
             )
         );
+
         foreach ($this->value as $column => $value) {
             $stmt->bindValue(":$column", $value);
         }
 
         return $stmt;
     }
+//    {
+//        $availableColumns = $this->insertInto->getColumns();
+//        $tableName = $this->insertInto->getTableName();
+//        $placeholders = [];
+//
+//        foreach (array_keys($this->value) as $column) {
+//            if (!in_array($column, $availableColumns)) {
+//                throw new InvalidArgumentException(
+//                    "Column $column is not in table's column list (Table: $tableName)"
+//                );
+//            }
+//            $placeholders[] = ":$column";
+//        }
+//
+//        $columnString = implode(', ', array_keys($this->value));
+//        $placeholderString = implode(', ', $placeholders);
+//
+//
+//        $query = "INSERT INTO %s (%s) VALUES (%s)";
+//
+//        $stmt = $this->connection->prepare(
+//            sprintf(
+//                $query,
+//                $tableName,
+//                $columnString,
+//                $placeholderString
+//            )
+//        );
+//        foreach ($this->value as $column => $value) {
+//            $stmt->bindValue(":$column", $value);
+//        }
+//
+//        return $stmt;
+//    }
 }
