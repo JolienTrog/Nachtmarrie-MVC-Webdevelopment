@@ -44,23 +44,23 @@ th {
 }
 /*Vocabulary card*/
 .cardbutton-container {
-    width: 1000px; /* Breite des Buttons */
-    height: 600px; /* Höhe des Buttons */
+    width: 1000px; /* Breite des Containers */
+    height: auto; /* Höhe des Containers an den Inhalt anpassen */
     margin: 130px auto; /* zentrierte Ausrichtung */
     margin-bottom: 50px;
     position: relative; /* relative Positionierung */
-    z-index: 1; /* Z-Index, um sicherzustellen, dass der Button über anderen Elementen liegt */
+    z-index: 1; /* Z-Index, um sicherzustellen, dass der Container über anderen Elementen liegt */
     text-decoration: none; /* Unterstreichung entfernen */
+    display: flex; /* Flexbox-Layout */
+    flex-direction: column; /* Anordnung der Elemente in Spalten */
+    align-items: center; /* Zentriert die Elemente horizontal */
 }
+
 .cardbutton {
     width: 1000px; /* Breite des Buttons */
     height: 600px; /* Höhe des Buttons */
     background-color: darkgray;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     border-radius: 10px;
-    margin-top: 150px;
     border: 2px solid dimgray; /* Dicke der Umrandung und Farbe */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Schatten */
     font-size: 70px; /* Schriftgröße */
@@ -71,6 +71,18 @@ th {
     border-color: white; /* Farbe der Umrandung beim Überfahren */
     background-color: lightgrey;
 }
+
+.big-bold {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.small-thin {
+    font-size: 0.5em;
+    font-weight: normal;
+    font-style: italic;
+}
+
 .learnCards {
     margin-top: 20px; /* Abstand zum Titel */
     background-color: dimgray;

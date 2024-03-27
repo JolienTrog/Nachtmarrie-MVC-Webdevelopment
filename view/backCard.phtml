@@ -1,21 +1,23 @@
-<div>
+<div xmlns="http://www.w3.org/1999/html">
     <a class="back-link" href="/item"><-back</a>
 </div>
 <div class="cardbutton-container">
     <a href="/item/frontCard?id=<?= $this->data['id'] ?>">
         <button class="cardbutton">
-            <?= htmlspecialchars($this->data['result'][0]['de']) ?>
+            <span class="big-bold"><?= htmlspecialchars($this->data['result'][0]['ide']) ?></span>
+            <br>
+            <span class="small-thin"><?= htmlspecialchars($this->data['result'][0]['sde']) ?></span>
         </button>
     </a>
 </div>
-<div class="btn-container">
+<div class="known-container">
     <!--not finished: wenn button geklickt dann wird in db gespeichert 'unknown' -->
-    <a href="/item/frontCard?id=<?= $this->data['id'] ?>" class="btn">
-        <button class="btn" type="submit" name="unknown">❌</button>
+    <a href="/item/frontCard?id=<?= $this->data['id'] ?>" class="known">
+        <button class="known" type="submit" name="unknown">❌</button>
     </a>
     <!--not finished: wenn button geklickt dann wird in db gespeichert 'known' -->
-    <a href="/item/frontCard" class="btn">
-        <button class="btn" type="submit" name="known">✔️</button>
+    <a href="/item/frontCard" class="known">
+        <button class="known" type="submit" name="known">✔️</button>
     </a>
 
 </div>
