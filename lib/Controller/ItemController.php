@@ -42,10 +42,19 @@ class ItemController extends Controller
      */
     public function frontCardAction(): void
     {
+
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
         } else {
-            $id = rand(41, 48);
+            $items = (new Select($this->connection))
+                ->columns(['id'])
+                ->from(new Item)
+                ->fetchAll();
+
+            $idLen = count($items);
+//            $idLen = implode('', $idLen);
+            echo $idLen;
+            $id = rand(38, $idLen);
         }
 
         $select = (new Select($this->connection))
