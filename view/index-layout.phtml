@@ -1,6 +1,7 @@
 <div class="logo-container">
     <img class="logo" src="Lijst_logo.png" alt="Image of Nachtmerrie">
 </div>
+
 <div class="button-container">
     <form action="/item/frontCard" method="post">
         <button class="actionButton">Woorden leren</button>
@@ -26,10 +27,12 @@
             <td><?= htmlspecialchars($row['id']) ?></td>
             <td><?= htmlspecialchars($row['nl']) ?></td>
             <td><?= htmlspecialchars($row['de']) ?></td>
-            <td><form action="/item/delete" method="post">
+            <td>
+                <form action="/item/delete" method="post">
                     <input type="hidden" name="delId" value="<?= htmlspecialchars($row['id']) ?>">
                     <button type="submit" name="delete" class="delItem">X</button>
-                </form></td>
+                </form>
+            </td>
         </tr>
     <?php endforeach ?>
     </tbody>
