@@ -36,6 +36,7 @@ class ItemController extends Controller
 
         echo $viewObject->render();
     }
+
     /**
      * @return void gets a random word via ID from the database and shows the Dutch word
      */
@@ -44,13 +45,15 @@ class ItemController extends Controller
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
         } else {
-            $id = rand(1, 3);
+            $id = rand(41, 48);
         }
 
         $select = (new Select($this->connection))
-            ->columns(['nl'])
-            ->where("id=:id", [":id" => $id])
-            ->from(new Item());
+            ->columns(['sentence.nl as snl', 'item.nl as inl'])
+            ->where("item.id=:id", [":id" => $id])
+            ->from(new Item())
+            ->innerJoin(new Sentence(), 'id', 'item_id');
+
 
         $result = $select->fetchAll();
 
@@ -61,9 +64,10 @@ class ItemController extends Controller
             ->setData('result', $result)
             ->setData('id', $id)
             ->setStylesheet('index.css');
-        
+
         echo $viewObject->render();
     }
+
     /**
      * @return void gets the german translation to the Dutch word from frontCardAction
      */
@@ -71,12 +75,15 @@ class ItemController extends Controller
     {
 
         $id = $_GET['id'];
+
         $select = (new Select($this->connection))
-            ->columns(['de'])
-            ->where("id=:id", [":id" => $id])
-            ->from(new Item());
+            ->columns(['sentence.de as sde', 'item.de as ide'])
+            ->where("item.id=:id", [":id" => $id])
+            ->from(new Item())
+            ->innerJoin(new Sentence(), 'id', 'item_id');
 
         $result = $select->fetchAll();
+
 
         $viewObject = (new View())
             ->setOuterLayout('outer-layout.phtml')
@@ -88,6 +95,7 @@ class ItemController extends Controller
 
         echo $viewObject->render();
     }
+
     /**
      * it extracts sentences and one word from each sentence from a json file, passes the data via
      * deepl API to translation, inserts the dutch-german sentence and word to database
@@ -107,9 +115,14 @@ class ItemController extends Controller
                 ->value(['de' => $word, 'nl' => $translator->translateText($word, 'de', 'nl')->text])
                 ->insertInto(new Item())
                 ->execute();
+            $itemID = (new Select($this->connection))
+                ->columns(['id'])
+                ->from(new Item)
+                ->orderBy('id', 'desc')
+                ->fetchAll()[0]['id'];
             (new Insert($this->connection))
                 ->insertInto(new Sentence())
-                ->value(['de' => $sentence, 'nl' => $translator->translateText($sentence, 'de', 'nl')->text])
+                ->value(['item_id' => $itemID, 'de' => $sentence, 'nl' => $translator->translateText($sentence, 'de', 'nl')->text])
                 ->execute();
         }
 
@@ -126,6 +139,7 @@ class ItemController extends Controller
             echo 'Documents: ' . $usage->document->count . ' of ' . $usage->document->limit . '<br>';
         }
     }
+
     /**
      * takes a value from DB and deletes it
      * @return void
@@ -149,6 +163,7 @@ class ItemController extends Controller
         }   //redirect to index
         header("Location: /item");
     }
+
     public function newItemAction()
     {
 
@@ -163,6 +178,7 @@ class ItemController extends Controller
 
 
     }
+
     public function insertAction()
     {
 
@@ -189,7 +205,6 @@ class ItemController extends Controller
         //redirect to other page with url
         header("Location: /item");
     }
-
 
 
 }
