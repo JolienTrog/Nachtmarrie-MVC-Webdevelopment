@@ -148,7 +148,6 @@ class ItemController extends Controller
             echo 'Documents: ' . $usage->document->count . ' of ' . $usage->document->limit . '<br>';
         }
     }
-
     /**
      * takes a value from DB and deletes it
      * @return void
@@ -160,15 +159,18 @@ class ItemController extends Controller
             $delId = $_POST['delId'];
 
             //delete klasse ausführen
-            $delete = (new Delete($this->connection))
+            $deleteSentence = (new Delete($this->connection))
+                ->deleteFrom(new Sentence())
+                ->where("item_id=:item_id")
+                ->value(['item_id' => $delId]);
+            $deleteSentence->execute();
+
+            $deleteItem = (new Delete($this->connection))
                 ->deleteFrom(new Item())
                 ->where("id=:id")
                 ->value(['id' => $delId]);
+            $deleteItem->execute();
 
-            //überprüfen ob gelöscht
-
-            //ausführen
-            $delete->execute();
         }   //redirect to index
         header("Location: /item");
     }

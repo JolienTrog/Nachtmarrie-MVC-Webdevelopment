@@ -12,6 +12,7 @@ class Delete
     protected $connection;
     protected $value;
     protected $deleteFrom;
+    protected $column;
 
     protected $condition;
 
@@ -22,6 +23,11 @@ class Delete
     public function value(array $insertValues): self
     {
         $this->value = $insertValues;
+        return $this;
+    }
+    public function column(array $column): self
+    {
+        $this->column = $column;
         return $this;
     }
     public function deleteFrom(Table $table): self
@@ -42,12 +48,9 @@ class Delete
 
     protected function prepareDelete(): PDOStatement
     {
-
-        $tableName = $this->deleteFrom->getTableName();
-
-
-
+        //SQL DELETE FROM items WHERE id = ?;
         $query = "DELETE FROM %s WHERE %s";
+        $tableName = $this->deleteFrom->getTableName();
 
         $stmt = $this->connection->prepare(
             sprintf(
@@ -56,10 +59,7 @@ class Delete
                 $this->condition
             )
         );
-        // DELETE FROM %s WHERE id = :id AND username = :username
 
-
-        // [':id' => 123345, ':username' => 'testUser' ]
         foreach ($this->value as $key => $value) {
             $stmt->bindValue($key, $value);
         }
