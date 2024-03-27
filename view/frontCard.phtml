@@ -1,13 +1,13 @@
-<div >
+<div>
     <a class="back-link" href="/item"><-back</a>
 </div>
 <div class="cardbutton-container">
-<a href="/item/backCard?id=<?= $this->data['id']?>">
+    <a href="/item/backCard?id=<?= $this->data['id'] ?>">
 
-    <button class="cardbutton" type="submit" name="backCard">
-            <?= htmlspecialchars($this->data['resultItem'][0]['nl']) ?>
+        <button class="cardbutton" type="submit" name="backCard">
+            <span class="big-bold"> <?= htmlspecialchars($this->data['result'][0]['inl']) ?></span>
             <br>
-            <?= htmlspecialchars($this->data['resultSentence'][0]['nl']) ?>
-    </button>
-</a>
+            <span class="small-thin"><?= htmlspecialchars($this->data['result'][0]['snl']) ?></span>
+        </button>
+    </a>
 </div>
