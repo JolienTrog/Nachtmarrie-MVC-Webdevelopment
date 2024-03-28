@@ -65,7 +65,8 @@ Require all granted
 </Directory>
 </VirtualHost>
 ```
-Generate a new vocabulary list.
+14. Open the page in the browser via localhost
+15. Generate a new vocabulary list with the button 'nieuw woordenlijst'
 
 ### Using the Application
 
