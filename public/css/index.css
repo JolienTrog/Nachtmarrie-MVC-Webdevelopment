@@ -248,7 +248,6 @@ input[type="text"] {
     box-sizing: border-box;
     outline: none;
 }
-
 .detail-container{
     width: 80%; /* Breite des Containers */
     height: 80vh; /* Höhe des Containers */
@@ -257,5 +256,21 @@ input[type="text"] {
     flex-direction: column; /* Anordnung der Elemente in Spalten */
     justify-content: center; /* Zentrierung vertikal */
     align-items: center; /* Zentrierung horizontal */
-
+}
+/*Button to save new or updated content */
+.editButton {
+        background-color: dimgray;
+        color: white;
+        font-size: 18px;
+        padding: 20px 40px;
+        font-family: "Courier 10 Pitch", sans-serif;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+        margin: 0 10px; /* Fügt seitlichen Abstand zwischen den Buttons hinzu */
+}
+    .editButton:hover {
+        background-color: white; /* Farbe ändern, wenn Mauszeiger darüber bewegt wird */
+        color: #171715;
 }

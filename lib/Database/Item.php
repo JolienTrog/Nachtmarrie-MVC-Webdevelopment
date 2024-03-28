@@ -6,12 +6,16 @@ namespace Nachtmerrie\Database;
 
 class Item extends Table
 {
-
+    /**
+     * @return array
+     */
     public function getPrimaryKey(): array
     {
         return ['id'];
     }
-
+    /**
+     * @return array
+     */
     public function getColumns(): array
     {
         return [
@@ -20,7 +24,9 @@ class Item extends Table
             'de'
         ];
     }
-
+    /**
+     * @return string
+     */
     public function getTableName(): string
     {
         return 'item';
