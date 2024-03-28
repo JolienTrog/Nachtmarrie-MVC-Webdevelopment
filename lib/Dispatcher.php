@@ -16,7 +16,7 @@ class Dispatcher
     public static function dispatch() : void
     {
         $requestedUrl = explode('?', $_SERVER['REQUEST_URI'])[0];
-        
+
         $parts = explode(
             '/',
             trim(

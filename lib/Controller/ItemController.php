@@ -116,7 +116,7 @@ class ItemController extends Controller
         $extractData = (new Extract());
         $data = $extractData->execute();
 
-        $authKey = "148cc420-c83e-4bc8-a4d0-4bd710d0d55a:fx"; //only internal use, for real projects this should be in a different file
+//!!!!!        $authKey = ;  API authKey
         $translator = new Translator($authKey);
         //testtool for connection to server with deepl-mock docker [TranslatorOptions::SERVER_URL => 'localhost:3000']
         foreach ($data as $word => $sentence) {
