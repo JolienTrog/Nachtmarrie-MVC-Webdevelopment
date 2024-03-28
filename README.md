@@ -66,7 +66,9 @@ Require all granted
 </VirtualHost>
 ```
 14. Open the page in the browser via localhost
-15. Generate a new vocabulary list with the button 'nieuw woordenlijst'
+15. Get a privat authKey for the API:  [](https://www.deepl.com/de/pro-api)
+16. Implement the Key in a save Way to your code (bugfix comming soon)
+17. Generate a new vocabulary list with the button 'nieuw woordenlijst'
 
 ### Using the Application
 
