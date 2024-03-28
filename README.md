@@ -22,7 +22,6 @@ This application helps you learn Dutch vocabulary by providing words, example se
     - `de` (varchar(255))
 8. Add a foreign key to the `sentence` table: `ALTER TABLE sentence ADD FOREIGN KEY(item_id) REFERENCES item(id);`
 9. Get the schema of the `item` table: `DESC item;`
-
 ```
 CREATE DATABASE nachtmerrie;
 USE nachtmerrie;
@@ -34,8 +33,6 @@ CREATE TABLE sentence (id int primary key auto_increment, item_id int, nl varcha
 ALTER TABLE sentence ADD FOREIGN KEY(item_id) REFERENCES item(id); 
 DESC item;
 ```
-
-
 10. To create and edit a new project in the /var/www directory, the owner of the project directory must be changed.
 
 `sudo chown username:www-data /var/www/nachtmerrie -R`
@@ -53,10 +50,8 @@ Create the directory 'nachtmerrie' in /var/www/
 sudo apt install apache2
 sudo systemctl start apache2
 ```
-
 13. Change Virtual Host configuration in `/etc/apache2/sites-available/000-default.conf`
-
-<details><summary>file</summary>
+```
 VirtualHost *:80>
 ServerAdmin webmaster@localhost
 DocumentRoot /var/www/nachtmerrie/public
@@ -69,7 +64,7 @@ AllowOverride All
 Require all granted
 </Directory>
 </VirtualHost>
-</details>
+```
 
 
 Generate a new vocabulary list.
@@ -88,6 +83,69 @@ Generate a new vocabulary list.
 - Learn Dutch vocabulary with words and example sentences.
 - Add new words and sentences to the database.
 - Generate new vocabulary lists based on your learning progress.
+
+## Importing Custom Vocabulary from a JSON File
+
+This section explains how to import your own vocabulary words from a JSON file into the Dutch vocabulary learning application.
+
+### Requirements
+
+- A JSON file containing your vocabulary entries.
+
+### Steps
+
+1. **Create a JSON File:**
+   - Prepare a JSON file with your vocabulary data. The file should be structured as follows:
+
+   ```json
+  {
+  "pdfDoc": "Filename.pdf",
+  "pages": [
+    {
+      "pageNo": 1,
+      "txtRns": [
+        {
+          "text": "This is some example text."
+        },
+        ...
+      ]
+    },
+    ...
+  ]
+}
+   ```
+
+   - Each object in the list represents a vocabulary entry.
+   - The `"nl"` key stores the Dutch word.
+   - The `"de"` key stores the German translation.
+
+2. **Place the JSON File:**
+   - Move the created JSON file to the `nachtmerrie/Files` directory within your project.
+
+3. **Modify `Extract.php`:**
+   - Open the file `nachtmerrie/lib/Extract.php`.
+
+4. **Update `$jsonFile` Variable:**
+   - Locate the `getContent` method within the file.
+   - Change the value of the `$jsonFile` variable to point to the path of your JSON file. Here's an example:
+
+   ```php
+   $jsonFile = "../Files/myWords.json";
+   ```
+
+   - Replace `"myWords.json"` with the actual filename of your JSON file.
+
+5. **Run the Application:**
+   - Execute the application as you normally would.
+
+### Notes
+
+- Ensure your JSON file is encoded in UTF-8 format.
+- The filename must have the `.json` extension.
+
+
+By following these steps, you can leverage your custom vocabulary lists stored in JSON format to enhance your learning experience within this Dutch vocabulary application.
+
 
 ### Version 2 Ideas
 
