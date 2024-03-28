@@ -10,6 +10,7 @@ h1 {
     text-align: center;
     margin-bottom: 1px;
 }
+
 /*Item list logo*/
 .logo-container {
     display: flex;
@@ -25,23 +26,28 @@ h1 {
     max-width: 100%; /* Maximale Breite des Bildes */
     max-height: 100%; /* Maximale Höhe des Bildes */
 }
+
 /*item list table*/
 table {
     margin: 0 auto; /* Tabelle zentriert ausrichten */
     width: 50%; /* Breite der Tabelle */
     border-collapse: collapse; /* Zusammenführen der Tabellenrahmen */
     background-color: lightgrey;
+
 }
 
 th, td {
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid darkgray; /* Grau */
+    font-size: 16px; /* Hier die gewünschte Schriftgröße einfügen */
 }
 
 th {
     background-color: #eeeeee; /* Hellgrau */
+
 }
+
 /*Vocabulary card*/
 .cardbutton-container {
     width: 1000px; /* Breite des Containers */
@@ -67,6 +73,7 @@ th {
     cursor: pointer; /* Zeiger-Cursor beim Überfahren des Buttons */
     text-decoration: none; /* Unterstreichung entfernen */
 }
+
 .cardbutton:hover {
     border-color: white; /* Farbe der Umrandung beim Überfahren */
     background-color: lightgrey;
@@ -99,12 +106,24 @@ th {
     margin-right: 30px;
     margin-bottom: 20px;
 }
+
 /*Button for known and unknown in Vocabulary back side card*/
 .known-container {
     text-align: center;
     margin-top: 5px;
 }
+
 .known {
+    padding: 30px 60px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #1e301d;
+}
+
+.unknown {
+    color: #3f0800;
     padding: 30px 60px;
     margin: 0 10px;
     border: none;
@@ -113,10 +132,10 @@ th {
 }
 
 /*Button on item list to learn Vocabulary, insert new Item, extract new words*/
-.actionButton{
+.actionButton {
     background-color: dimgray;
     color: white;
-    font-size: medium;
+    font-size: 18px;
     padding: 20px 40px;
     font-family: "Courier 10 Pitch", sans-serif;
     border: none;
@@ -124,6 +143,15 @@ th {
     cursor: pointer;
     text-decoration: none;
     margin: 0 10px; /* Fügt seitlichen Abstand zwischen den Buttons hinzu */
+}
+.actionButton:hover {
+    background-color: lightgrey; /* Farbe ändern, wenn Mauszeiger darüber bewegt wird */
+    color: #171715;
+}
+.edit-button-container {
+    display: flex; /* Flexbox verwenden */
+    justify-content: center; /* Zentriert die Buttons horizontal */
+    margin: 20px;
 }
 
 a {
@@ -140,25 +168,55 @@ a {
     margin-left: 40px;
 
 }
+
 .back-link:hover {
     color: lightgrey; /* Farbe ändern, wenn Mauszeiger darüber bewegt wird */
 }
+
 .button-container {
     display: flex; /* Flexbox verwenden */
     justify-content: center; /* Zentriert die Buttons horizontal */
     margin-bottom: 20px;
 }
+
+tr td .button-inline-container {
+    display: flex; /* Flexbox verwenden */
+    align-items: center; /* Elemente vertikal zentrieren */
+    margin-left: auto; /* Automatische linke Marge hinzufügen */
+    font-family: "Courier 10 Pitch", sans-serif;
+
+}
+
 /*delete button on item list*/
 .delItem {
-    margin-bottom: 10px;
+    margin-left: 30px;
     background-color: #3f0800;
     color: white;
-    padding: 10px 20px;
+    padding: 15px 25px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+
+}
+.delItem:hover {
+    background-color: dimgray; /* Farbe ändern, wenn Mauszeiger darüber bewegt wird */
+    color: #171715;
 }
 
+/*button to show details page*/
+.detailsButton {
+
+    background-color: #1e301d; /* Dark green color */
+    color: white;
+    padding: 15px 25px; /* Inherit padding from delItem */
+    border: none;
+    border-radius: 4px; /* Inherit border-radius from delItem */
+    cursor: pointer; /* Inherit cursor from delItem */
+}
+.detailsButton:hover {
+    background-color: dimgray; /* Farbe ändern, wenn Mauszeiger darüber bewegt wird */
+    color: #171715;
+}
 /*insert new item*/
 /* Stil für den weißen Kasten */
 .container {
@@ -172,12 +230,13 @@ a {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-size: 18px; /* Größere Schriftgröße */
 }
 
 /* Stil für den Titel */
 .newWord {
-    margin-top: 200px;
-    font-size: 35px;
+    margin-top: 100px;
+    font-size: 30px;
 }
 
 /* Stil für die Eingabefelder */
@@ -185,7 +244,18 @@ input[type="text"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
-    font-size: 20px; /* Größere Schriftgröße */
-    font-weight: bold; /* Fettschrift */
+    font-size: 18px; /* Größere Schriftgröße */
     box-sizing: border-box;
+    outline: none;
+}
+
+.detail-container{
+    width: 80%; /* Breite des Containers */
+    height: 80vh; /* Höhe des Containers */
+    margin: auto; /* Automatische Seitenumrandung, um den Container zu zentrieren */
+    display: flex; /* Verwenden von Flexbox für Layout */
+    flex-direction: column; /* Anordnung der Elemente in Spalten */
+    justify-content: center; /* Zentrierung vertikal */
+    align-items: center; /* Zentrierung horizontal */
+
 }
