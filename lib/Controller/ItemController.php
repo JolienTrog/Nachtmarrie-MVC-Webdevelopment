@@ -116,7 +116,10 @@ class ItemController extends Controller
         $extractData = (new Extract());
         $data = $extractData->execute();
 
-//!!!!!        $authKey = ;  API authKey
+        $jsonFile = "../Files/.env.json";
+        $json = file_get_contents($jsonFile);
+        $authKey= json_decode($json);
+
         $translator = new Translator($authKey);
         //testtool for connection to server with deepl-mock docker [TranslatorOptions::SERVER_URL => 'localhost:3000']
         foreach ($data as $word => $sentence) {
@@ -208,8 +211,15 @@ class ItemController extends Controller
             ->insertInto(new Item());
         $insertItem->execute();
 
+        $itemID = (new Select($this->connection))
+            ->columns(['id'])
+            ->from(new Item)
+            ->orderBy('id', 'desc')
+            ->fetchAll()[0]['id'];
+
         $insertSentence = (new Insert($this->connection))
             ->value([
+                'item_id' => $itemID,
                 'nl' => $nl_sentence,
                 'de' => $de_sentence
             ])
