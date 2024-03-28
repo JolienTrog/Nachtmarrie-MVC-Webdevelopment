@@ -65,8 +65,6 @@ Require all granted
 </Directory>
 </VirtualHost>
 ```
-
-
 Generate a new vocabulary list.
 
 ### Using the Application
@@ -97,7 +95,8 @@ This section explains how to import your own vocabulary words from a JSON file i
 1. **Create a JSON File:**
    - Prepare a JSON file with your vocabulary data. The file should be structured as follows:
 
-   ```json
+ 
+```
   {
   "pdfDoc": "Filename.pdf",
   "pages": [
@@ -113,8 +112,7 @@ This section explains how to import your own vocabulary words from a JSON file i
     ...
   ]
 }
-   ```
-
+```
    - Each object in the list represents a vocabulary entry.
    - The `"nl"` key stores the Dutch word.
    - The `"de"` key stores the German translation.
@@ -129,10 +127,9 @@ This section explains how to import your own vocabulary words from a JSON file i
    - Locate the `getContent` method within the file.
    - Change the value of the `$jsonFile` variable to point to the path of your JSON file. Here's an example:
 
-   ```php
-   $jsonFile = "../Files/myWords.json";
-   ```
-
+  
+ `  $jsonFile = "../Files/myWords.json";`
+ 
    - Replace `"myWords.json"` with the actual filename of your JSON file.
 
 5. **Run the Application:**
@@ -142,7 +139,6 @@ This section explains how to import your own vocabulary words from a JSON file i
 
 - Ensure your JSON file is encoded in UTF-8 format.
 - The filename must have the `.json` extension.
-
 
 By following these steps, you can leverage your custom vocabulary lists stored in JSON format to enhance your learning experience within this Dutch vocabulary application.
 
