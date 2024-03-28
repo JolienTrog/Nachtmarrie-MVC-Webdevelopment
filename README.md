@@ -1,4 +1,4 @@
-## nachtmerrie: Dutch Vocabulary Application
+## Nachtmerrie: Dutch Vocabulary Application
 
 ### Overview
 
