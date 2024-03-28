@@ -36,8 +36,41 @@ DESC item;
 ```
 
 
-10. Create the directory 'nachtmerrie' in /var/www/
+10. To create and edit a new project in the /var/www directory, the owner of the project directory must be changed.
+
+`sudo chown username:www-data /var/www/nachtmerrie -R`
+
+Create the directory 'nachtmerrie' in /var/www/
+
+`mkdir /var/www/nachtmerrie`
+
 11. Clone the Git repository.
+
+`git clone https://git.netways.de/jtrog/nachtmerrie.git`
+
+12. Install apache2 as webserver
+```
+sudo apt install apache2
+sudo systemctl start apache2
+```
+
+13. Change Virtual Host configuration in `/etc/apache2/sites-available/000-default.conf`
+
+<details><summary>file</summary>
+VirtualHost *:80>
+ServerAdmin webmaster@localhost
+DocumentRoot /var/www/nachtmerrie/public
+
+ErrorLog ${APACHE_LOG_DIR}/error.log
+CustomLog ${APACHE_LOG_DIR}/access.log combined
+<Directory /var/www/nachtmerrie/public>
+Options Indexes FollowSymLinks
+AllowOverride All
+Require all granted
+</Directory>
+</VirtualHost>
+</details>
+
 
 Generate a new vocabulary list.
 
