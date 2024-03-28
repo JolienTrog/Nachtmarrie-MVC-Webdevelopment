@@ -1,0 +1,27 @@
+<div>
+    <a class="back-link" href="/item/details?id=<?= $this->data['id'] ?>"><-terug</a>
+</div>
+<h1 class="newWord">Bewerk je woordenschat</h1>
+
+<div class="container">
+    <form action="/item/edit" method="post">
+
+        <label for="nl">Nederlands:</label>
+        <input type="text" id="inl" name="inl" value="<?= htmlspecialchars($this->data['result'][0]['inl']) ?>"><br><br>
+
+        <label for="nl_sentence">Nederlandse zin:</label>
+        <input type="text" id="snl" name="snl" value="<?= htmlspecialchars($this->data['result'][0]['snl']) ?>"><br><br>
+
+        <label for="de">Duits:</label>
+        <input type="text" id="ide" name="ide" value="<?= htmlspecialchars($this->data['result'][0]['ide']) ?>"><br><br>
+
+        <label for="de_sentence">Duitse zin:</label>
+        <input type="text" id="sde" name="sde" value="<?= htmlspecialchars($this->data['result'][0]['sde']) ?>"><br><br>
+
+        <input type="hidden" name="detailsID" value="<?= htmlspecialchars($this->data['id']) ?>">
+
+
+        <button type="submit" name="edit-submit" class="actionButton">opslaan</button>
+    </form>
+</div>
+
