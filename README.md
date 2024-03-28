@@ -1,4 +1,4 @@
-## English README for Dutch Vocabulary Application
+## nachtmerrie: Dutch Vocabulary Application
 
 ### Overview
 
@@ -36,7 +36,7 @@ DESC item;`
 10. Create the directory 'nachtmerrie' in /var/www/
 11. Clone the Git repository.
 
- Generate a new vocabulary list.
+Generate a new vocabulary list.
 
 ### Using the Application
 
