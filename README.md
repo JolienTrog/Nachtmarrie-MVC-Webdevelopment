@@ -23,7 +23,8 @@ This application helps you learn Dutch vocabulary by providing words, example se
 8. Add a foreign key to the `sentence` table: `ALTER TABLE sentence ADD FOREIGN KEY(item_id) REFERENCES item(id);`
 9. Get the schema of the `item` table: `DESC item;`
 
-`CREATE DATABASE nachtmerrie;
+```
+CREATE DATABASE nachtmerrie;
 USE nachtmerrie;
 SHOW DATABASES;
 
@@ -31,7 +32,9 @@ CREATE TABLE item;
 CREATE TABLE item (id int primary key auto_increment, nl varchar(255), de varchar(255));
 CREATE TABLE sentence (id int primary key auto_increment, item_id int, nl varchar(255), de varchar(255));
 ALTER TABLE sentence ADD FOREIGN KEY(item_id) REFERENCES item(id); 
-DESC item;`
+DESC item;
+```
+
 
 10. Create the directory 'nachtmerrie' in /var/www/
 11. Clone the Git repository.
