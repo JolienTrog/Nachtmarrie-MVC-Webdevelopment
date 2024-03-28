@@ -113,10 +113,6 @@ This section explains how to import your own vocabulary words from a JSON file i
   ]
 }
 ```
-   - Each object in the list represents a vocabulary entry.
-   - The `"nl"` key stores the Dutch word.
-   - The `"de"` key stores the German translation.
-
 2. **Place the JSON File:**
    - Move the created JSON file to the `nachtmerrie/Files` directory within your project.
 
@@ -126,7 +122,6 @@ This section explains how to import your own vocabulary words from a JSON file i
 4. **Update `$jsonFile` Variable:**
    - Locate the `getContent` method within the file.
    - Change the value of the `$jsonFile` variable to point to the path of your JSON file. Here's an example:
-
   
  `  $jsonFile = "../Files/myWords.json";`
  
