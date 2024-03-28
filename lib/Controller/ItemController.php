@@ -11,6 +11,7 @@ use Nachtmerrie\Extract;
 use Nachtmerrie\Insert;
 use Nachtmerrie\Select;
 use Nachtmerrie\View;
+use Nachtmerrie\Edit;
 
 
 class ItemController extends Controller
@@ -148,6 +149,7 @@ class ItemController extends Controller
             echo 'Documents: ' . $usage->document->count . ' of ' . $usage->document->limit . '<br>';
         }
     }
+
     /**
      * takes a value from DB and deletes it
      * @return void
@@ -219,30 +221,93 @@ class ItemController extends Controller
 
     public function detailsAction()
     {
+/*        if (isset($_POST['detailsID'])) {
+            $id = $_POST['detailsID'];
+        } else {
+            $id = $_GET['id'];
+        }*/
+        $id = $_POST['detailsID'] ?? $_GET['id'];
 
+
+        $select = (new Select($this->connection))
+            ->columns(['sentence.de as sde', 'item.de as ide', 'sentence.nl as snl', 'item.nl as inl'])
+            ->where("item.id=:id", [":id" => $id])
+            ->from(new Item())
+            ->innerJoin(new Sentence(), 'id', 'item_id');
+
+        $result = $select->fetchAll();
+
+
+        $viewObject = (new View())
+            ->setOuterLayout('outer-layout.phtml')
+            ->setInnerLayout('details.phtml')
+            ->setTitle('Nachtmerrie')
+            ->setData('result', $result)
+            ->setData('id', $id)
+            ->setStylesheet('index.css');
+
+        echo $viewObject->render();
+    }
+
+    public function editAction()
+    {
+        if (isset($_POST['edit-submit'])) {
 
             $id = $_POST['detailsID'];
 
-            $select = (new Select($this->connection))
-                ->columns(['sentence.de as sde', 'item.de as ide', 'sentence.nl as snl', 'item.nl as inl'])
-                ->where("item.id=:id", [":id" => $id])
-                ->from(new Item())
-                ->innerJoin(new Sentence(), 'id', 'item_id');
+            $inl = $_POST['inl'];
+            $snl = $_POST['snl'];
+            $ide = $_POST['ide'];
+            $sde = $_POST['sde'];
 
-            $result = $select->fetchAll();
+            (new Edit($this->connection))
+                ->table(new Item())
+                ->where("id=:id", [":id" => $id])
+                ->values([
+                    'nl' => $inl,
+                    'de' => $ide
+                ])
+                ->execute();
 
+            (new Edit($this->connection))
+                ->table(new Sentence())
+                ->where("item_id=:item_id", [":item_id" => $id])
+                ->values([
+                    'nl' => $snl,
+                    'de' => $sde
+                ])
+                ->execute();
 
-            $viewObject = (new View())
-                ->setOuterLayout('outer-layout.phtml')
-                ->setInnerLayout('details.phtml')
-                ->setTitle('Nachtmerrie')
-                ->setData('result', $result)
-                ->setData('id', $id)
-                ->setStylesheet('index.css');
+            echo "Test: $id";
+            header("Location: details?id=$id");
+            return;
 
-            echo $viewObject->render();
         }
+        $id = $_POST['id'];
 
+        $select = (new Select($this->connection))
+            ->columns(['sentence.de as sde', 'item.de as ide', 'sentence.nl as snl', 'item.nl as inl'])
+            ->where("item.id=:id", [":id" => $id])
+            ->from(new Item())
+            ->innerJoin(new Sentence(), 'id', 'item_id');
+
+        $result = $select->fetchAll();
+
+        $viewObject = (new View())
+            ->setOuterLayout('outer-layout.phtml')
+            ->setInnerLayout('edit.phtml')
+            ->setTitle('Nachtmerrie')
+            ->setData('result', $result)
+            ->setData('id', $id)
+            ->setStylesheet('index.css');
+
+        echo $viewObject->render();
+
+
+
+
+
+    }
 
 }
 
