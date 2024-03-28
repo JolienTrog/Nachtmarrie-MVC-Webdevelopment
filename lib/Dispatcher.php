@@ -13,12 +13,10 @@ class Dispatcher
      * @return void calls the controller and corresponding method
      * @return void
      */
-
     public static function dispatch() : void
     {
         $requestedUrl = explode('?', $_SERVER['REQUEST_URI'])[0];
-
-
+        
         $parts = explode(
             '/',
             trim(
@@ -37,8 +35,6 @@ class Dispatcher
             http_response_code(404);
             return;
         }
-
         (new $controllerClassPath())->$actionMethod();
-
     }
 }

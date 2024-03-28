@@ -11,11 +11,19 @@ abstract class Controller
      */
     protected $connection;
 
+    /**
+     * set the connection via Constructor
+     */
     public function __construct()
     {
         $this->setConnection();
     }
 
+    /**
+     * Connection details with admit-user
+     *
+     * @return void
+     */
     protected function setConnection()
     {
         $this->connection = new PDO(
@@ -24,5 +32,4 @@ abstract class Controller
             'admin123'
         );
     }
-
 }
