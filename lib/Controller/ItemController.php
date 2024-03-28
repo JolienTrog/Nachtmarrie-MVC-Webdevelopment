@@ -217,6 +217,32 @@ class ItemController extends Controller
         header("Location: /item");
     }
 
+    public function detailsAction()
+    {
+
+
+            $id = $_POST['detailsID'];
+
+            $select = (new Select($this->connection))
+                ->columns(['sentence.de as sde', 'item.de as ide', 'sentence.nl as snl', 'item.nl as inl'])
+                ->where("item.id=:id", [":id" => $id])
+                ->from(new Item())
+                ->innerJoin(new Sentence(), 'id', 'item_id');
+
+            $result = $select->fetchAll();
+
+
+            $viewObject = (new View())
+                ->setOuterLayout('outer-layout.phtml')
+                ->setInnerLayout('details.phtml')
+                ->setTitle('Nachtmerrie')
+                ->setData('result', $result)
+                ->setData('id', $id)
+                ->setStylesheet('index.css');
+
+            echo $viewObject->render();
+        }
+
 
 }
 

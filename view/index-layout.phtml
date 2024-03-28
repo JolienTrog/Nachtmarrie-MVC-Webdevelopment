@@ -16,9 +16,9 @@
     <thead>
     <tr>
         <th>ID</th>
-        <th>NL</th>
-        <th>DE</th>
-        <th> </th>
+        <th>Nederlands</th>
+        <th>Duits</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -28,10 +28,16 @@
             <td><?= htmlspecialchars($row['nl']) ?></td>
             <td><?= htmlspecialchars($row['de']) ?></td>
             <td>
-                <form action="/item/delete" method="post">
-                    <input type="hidden" name="delId" value="<?= htmlspecialchars($row['id']) ?>">
-                    <button type="submit" name="delete" class="delItem">X</button>
-                </form>
+                <div class="button-inline-container">
+                    <form action="/item/details" method="post">
+                        <input type="hidden" name="detailsID" value="<?= htmlspecialchars($row['id']) ?>">
+                        <button type="submit" name="showDetails" class="detailsButton">Detail</button>
+                    </form>
+                    <form action="/item/delete" method="post">
+                        <input type="hidden" name="delId" value="<?= htmlspecialchars($row['id']) ?>">
+                        <button type="submit" name="delete" class="delItem">X</button>
+                    </form>
+                </div>
             </td>
         </tr>
     <?php endforeach ?>

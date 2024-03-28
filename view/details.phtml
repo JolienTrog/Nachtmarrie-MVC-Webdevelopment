@@ -1,0 +1,26 @@
+<div>
+    <a class="back-link" href="/item"><-terug</a>
+</div>
+    <div class="detail-container">
+        <h1>Detailen</h1>
+        <table>
+            <tr>
+                <th>Nederlands</th>
+                <th>Duits</th>
+            </tr>
+            <tr>
+                <td><?= htmlspecialchars($this->data['result'][0]['inl']) ?></td>
+                <td><?= htmlspecialchars($this->data['result'][0]['snl']) ?></td>
+            </tr>
+            <tr>
+                <td><?= htmlspecialchars($this->data['result'][0]['ide']) ?></td>
+                <td><?= htmlspecialchars($this->data['result'][0]['sde']) ?></td>
+            </tr>
+        </table>
+        <div class="edit-button-container">
+        <form action="/item/details/edit" method="post">
+            <input type="hidden" name="edit" value="<?= htmlspecialchars($this->data['id']) ?>">
+            <button type="submit" name="edit" class="actionButton">bewerken</button>
+        </form>
+    </div>
+    </div>
