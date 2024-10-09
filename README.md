@@ -1,3 +1,5 @@
+<img src="https://github.com/user-attachments/assets/115768fd-0106-49ef-b1ec-f8e27cf474ce" width="200" />
+
 ## Nachtmerrie: Dutch Vocabulary Application
 
 ### Overview
